@@ -27,16 +27,17 @@ Development builds can only be deployed to the dev and test environments. Do the
 **Prerequisites:**
 
 - the build artifact has been built by the build-release workflow (see above: 1. Trigger a development build)
-- there exists an open pull request for the target branch to merge to `main`
-- there are no merge conflicts
+- the target branch is `main`; or there exists an open pull request for the target branch to merge to `main` without merge conflicts
 
 **Trigger a deployment to the dev and test environments:**
 
 1. Go to the **Actions** tab in your GitHub repository.
-2. Select the Deploy workflow.
-3. Select the branch to deploy.
+2. Select the `Run Deploy` workflow.
+3. Select the branch to deploy and the target environment
 4. Click **"Run workflow"** to start deployment.
 5. Click the link to the deployment job in the workflow logs to view the deployment job progress.
+6. The workflow will automatically deploy to development.
+7. If the deployment is targeted for test, the workflow will pause for approval before proceeding with the deplyoment to test.
 
 ### 3. **Trigger a release build**
 
@@ -58,6 +59,8 @@ The Build and release workflow will be triggered automatically to build the rele
 3. Select the tag (release) to deploy.
 4. Click **"Run workflow"** to start deployment.
 5. Click the link to the deployment job in the workflow logs to view the deployment job progress.
+6. The workflow will automatically deploy to development.
+7. The workflow will pause for approval before proceeding with each deployment to test and prod.
 
 ## Configuring the Polaris Pipeline
 
