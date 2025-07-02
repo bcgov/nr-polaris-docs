@@ -29,6 +29,7 @@ Before proceeding, collect the following information:
 
 **IMPORTANT:**
 
+- The project and service names must match those in NR Broker.
 - To find the Client ID, go to [NR Broker](https://broker.io.nrs.gov.bc.ca/) and search for the broker account. The Client ID is displayed in the Details panel. To copy the Client ID to the clipboard, click Details > Copy > Client ID.
 
 ## 3. Add pipeline files
