@@ -36,6 +36,10 @@ podman run --rm -it -v ${PWD}:/src --userns keep-id ghcr.io/bcgov/nr-repository-
 podman run --rm -it -v ${PWD}:/src --userns keep-id ghcr.io/bcgov/nr-repository-composer:latest nr-repository-composer:gh-nodejs-build
 ```
 - Answer the prompts using the information gathered in the previous step.
+- To list all available prompts, run the commands with the --help-prompts option:
+```
+podman run --rm -it -v ${PWD}:/src --userns keep-id ghcr.io/bcgov/nr-repository-composer:latest nr-repository-composer:gh-maven-build --help-prompts
+```
 
 ## 4. Configure Maven
 
