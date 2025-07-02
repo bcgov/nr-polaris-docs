@@ -2,13 +2,10 @@
 
 User Guides and Documentation for the Polaris Pipeline
 
-## How to Deploy With the Polaris Pipeline
+## Set up a project from scratch
 
-Follow the [branch model](CONTRIBUTING.md#branch-model) and create a PR to the main branch to deploy to non-production environments.
+To set up a project for the pipeline from scratch, use the [Setup Guide](SETUP.md).
 
-Repositories use GitHub Packages to store release builds.
+## Deploy using the pipeline
 
-Creating a release will automatically create a package that you can deploy to production.
-
-Read more: [DEPLOY.md](DEPLOY.md)
-
+If a project has already been set up to use the pipeline, then follow the [Deployment Guide](DEPLOY.md)
