@@ -25,7 +25,7 @@ database_password: "{{ lookup('ansible.builtin.env', 'PODMAN_database_password')
 
 ## 3. Add custom Jinja2 templates
 
-Configuration files are stored in the `playbooks/templates/` directory and should be updated with the required template variables.
+Configuration templates are stored in the `playbooks/templates/` directory. Update these templates with the required Jinja2 variables for your application.
 
 Each template must also be referenced in the `playbooks/custom-tasks.yaml` file.
 
