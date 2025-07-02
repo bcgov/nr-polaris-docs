@@ -16,16 +16,6 @@ Before proceeding, collect the following information:
 - **Service:** Name of the service in NR Broker.
 - **License (SPDX):** The SPDX identifier for your project's license.
 - **Client ID:** The Client ID for the NR Broker account.
-- **Path to pom.xml:** Relative path to your `pom.xml` file.
-- **Path to unit tests:** Optional path to your unit test workflow (e.g., `./.github/workflows/test.yaml`).
-- **Publish to GitHub Packages:** Indicate if you want to publish to GitHub Packages (yes/no).
-- **GitHub Owner with repo path:** Full GitHub org and repository path (e.g., `bcgov-c/nr-results`).
-- **Deploy on-prem:** Indicate if on-premises deployment is required (yes/no).
-- **Deploy Jasper Reports:** Indicate if Jasper Reports deployment is needed (yes/no).
-- **Playbook path:** Path to your deployment playbook.
-- **Tomcat Context:** Tomcat context path (e.g., `ext#results`).
-- **Use alternative webapp directory:** Indicate if an alternative webapp directory should be used (yes/no).
-- **Add Webade configuration:** Indicate if Webade configuration is required (yes/no).
 
 **IMPORTANT:**
 
