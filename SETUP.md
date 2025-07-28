@@ -97,27 +97,6 @@ For a Java/Maven project, configure Maven:
 </profiles>
 ```
 
-- Add a `settings.xml` file to the root of your repo:
-
-```xml
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
-  <servers>
-    <server>
-      <id>nr-artifactory</id>
-      <username>${env.ARTIFACTORY_USERNAME}</username>
-      <password>${env.ARTIFACTORY_PASSWORD}</password>
-    </server>
-    <server>
-      <id>github</id>
-      <username>${env.GITHUB_USERNAME}</username>
-      <password>${env.GITHUB_TOKEN}</password>
-    </server>
-  </servers>
-</settings>
-```
-
 ## 5. Merge pipeline files to main
 
 - Commit and push the generated files.
