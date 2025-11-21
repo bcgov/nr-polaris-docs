@@ -1,0 +1,47 @@
+# .gitignore for a Markdown / documentation repository
+
+# macOS
+.DS_Store
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Static site generators / doc build outputs
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Hugo
+public/
+resources/_gen/
+
+# MkDocs / other builds
+site/
+docs/site/
+_build/
+
+# Common artefacts
+*.log
+*.tmp
+*.bak
+*.swp
+Thumbs.db
+
+# Exported docs/output formats
+*.pdf
+*.docx
+*.pptx
+
+# CI / caches
+.cache/
+.parcel-cache/
+.turbo/
+
+# Environment files
+.env
+.env.*
