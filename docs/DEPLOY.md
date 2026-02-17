@@ -2,12 +2,12 @@
 
 This guide will help you use the pipeline to deploy a Java/Maven or Node.js artifact.
 
-## 1. Prerequisites
+## Prerequisites
 
 - A deployable artifact published to GitHub Packages.
 - NR Broker account linked to GitHub (see [How to Link Your Broker Account to GitHub](https://apps.nrs.gov.bc.ca/int/confluence/display/OSCAR/Linking+to+a+GitHub+account)).
 
-## 2. Configure Application Settings
+## Configure Application Settings
 
 Applications are configured for each environment using Ansible variables defined in `playbooks/vars/custom/<env>.yaml` files, where `<env>` is one of (`dev`, `test`, `prod`, or `all`).
 
@@ -23,7 +23,7 @@ For example, to reference the value for the key `database_password`, add the fol
 database_password: "{{ lookup('ansible.builtin.env', 'PODMAN_database_password') }}"
 ```
 
-## 3. Add custom Jinja2 templates
+## Add custom Jinja2 templates
 
 Configuration templates are stored in the `playbooks/templates/` directory. Update these templates with the required Jinja2 variables for your application.
 
@@ -62,7 +62,7 @@ Add an item for the template to the `with_items` list in the `playbooks/custom-t
       }
 ```
 
-## 4. Trigger a development build
+## Trigger a development build
 
 A development build is the first step before deploying code to production. The development build is based on a pseudo-merge of the target branch and `main`. Development builds are triggered automatically by opening a pull request with the `main` branch as the base. They can also be triggered manually when `main` is the target branch, or when there is an open pull request with the `main` branch as the base. Do the following steps to trigger a development build manually:
 
@@ -97,7 +97,7 @@ Development builds can only be deployed to the dev and test environments. Do the
 6. The workflow will automatically deploy to development.
 7. If the deployment is targeted for test, the workflow will pause for approval before proceeding with the deplyoment to test.
 
-## 6. Trigger a release build
+## Trigger a release build
 
 When ready to deploy code to production, create a release:
 
@@ -110,7 +110,7 @@ When ready to deploy code to production, create a release:
 
 The Build and release workflow will be triggered automatically to build the release. After it builds successfully, you may trigger a deployment of the release to production.
 
-## 7. Deploy a production build
+## Deploy a production build
 
 1. Go to the **Actions** tab in your GitHub repository.
 2. Select the Deploy workflow.

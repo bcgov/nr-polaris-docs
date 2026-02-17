@@ -4,6 +4,8 @@
 
 * Developer
 ** [SETUP](/SETUP.md)
+** [BUILD](/BUILD.md)
+** [LOCAL](/LOCAL.md)
 ** [DEPLOY](/DEPLOY.md)
 
 * Reference

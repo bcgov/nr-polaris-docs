@@ -2,13 +2,13 @@
 
 This guide will help you set up the pipeline for a Java/Maven or Node.js project from scratch.
 
-## 1. Prerequisites
+## Prerequisites
 
 - Developer or lead-developer access in NR Broker. To get access, contact the Product Owner.
 - Ensure your NR Broker Account is linked to GitHub (see [How to Link Your Broker Account to GitHub](https://apps.nrs.gov.bc.ca/int/confluence/display/OSCAR/Linking+to+a+GitHub+account)).
 - Install either [Node.js](https://nodejs.org/) **or** [Docker](https://www.docker.com/) / [Podman](https://podman.io/) (required for running `nr-repository-composer`).
 
-## 2. Gather required information
+## Gather required information
 
 Before proceeding, collect the following information:
 
@@ -20,9 +20,10 @@ Before proceeding, collect the following information:
 **IMPORTANT:**
 
 - The project and service names must match those in NR Broker.
-- To find the Client ID, go to [NR Broker](https://broker.io.nrs.gov.bc.ca/) and search for the broker account. The Client ID is displayed in the Details panel. To copy the Client ID to the clipboard, click Details > Copy > Client ID.
+- To find the Client ID, go to [NR Broker](https://broker.io.nrs.gov.bc.ca/) and search for the broker account. The account is usually named after your project or team name.
+- To copy the Client ID to the clipboard, click the menu in the details panel and choose: Copy > Client ID.
 
-## 3. Add pipeline files
+## Add pipeline files
 
 To set up the pipeline, add the required files to the repository.
 
@@ -41,7 +42,7 @@ podman run --rm -it -v ${PWD}:/src --userns keep-id ghcr.io/bcgov/nr-repository-
 podman run --rm -it -v ${PWD}:/src --userns keep-id ghcr.io/bcgov/nr-repository-composer:latest nr-repository-composer:gh-maven-build --help-prompts
 ```
 
-## 4. Configure Maven
+## Configure Maven
 
 For a Java/Maven project, configure Maven:
 
@@ -97,14 +98,14 @@ For a Java/Maven project, configure Maven:
 </profiles>
 ```
 
-## 5. Merge pipeline files to main
+## Merge pipeline files to main
 
 - Commit and push the generated files.
 - Open a pull request and merge to the `main` branch.
 - Merging to the `main` branch will trigger a build.
 - Build and deploy workflows will become available after merging.
 
-## 6. Building packages
+## Building packages
 
 Building new packages follows the same general process:
 
