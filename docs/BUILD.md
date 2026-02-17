@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `env.sh` script initializes your build environment for CI/CD pipelines by loading service configuration, authenticating with Knox Vault, and sourcing build-specific environment variables and credentials from your catalog-info.yaml directory.
+The `env.sh` script initializes your build environment by loading service configuration, authenticating with Knox Vault, and sourcing build-specific environment variables and credentials from your catalog-info.yaml directory.
 
 ## Usage
 
@@ -108,5 +108,57 @@ To change which credentials are loaded during CI/CD builds:
        playbook.io.nrs.gov.bc.ca/toolsBuildSecrets: "ARTIFACTORY_USERNAME,ARTIFACTORY_PASSWORD"
        playbook.io.nrs.gov.bc.ca/toolsLocalBuildSecrets: "READ_ONLY_ARTIFACTORY_USERNAME,READ_ONLY_ARTIFACTORY_PASSWORD"
    ```
-3. Regenerate environment files using the appropriate playbook generator (pd-java-playbook, pd-oci-playbook, etc.)
+3. Regenerate environment files using the appropriate generator (pd-java-playbook, pd-oci-playbook, etc.)
 4. Re-source `env.sh` in your shell
+
+## Building Your Service
+
+Once you've sourced `env.sh`, use the appropriate build commands for your service type.
+
+### Maven (Java)
+
+Build your service using the Maven wrapper:
+
+```bash
+# Standard build (compile and package)
+./mvnw clean package
+
+# Build with specific profile (e.g., for GitHub Packages)
+./mvnw clean deploy -Pgithub
+
+# Build for Artifactory
+./mvnw clean deploy -Partifactory
+
+# Run tests only
+./mvnw test
+
+# Build without running tests
+./mvnw clean package -DskipTests
+
+# Build with detailed output
+./mvnw clean package -X
+```
+
+The Maven wrapper automatically uses the environment variables and credentials configured by `env.sh`.
+
+### Node.js / npm
+
+Build your Node.js service using npm:
+
+```bash
+# Install dependencies
+npm ci
+
+# Build the application
+npm run build
+
+# Run tests (if configured)
+npm test
+
+# Build and run tests
+npm run build && npm test
+```
+
+**Requirements:**
+- The `npm run build` command must create the build artifact
+- The preferred output directory for build artifacts is `dist/`
