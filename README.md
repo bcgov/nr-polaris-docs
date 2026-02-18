@@ -1,11 +1,11 @@
-# nr-polaris-docs
+# NR Polaris Pipeline Docs
 
-User Guides and Documentation for the Polaris Pipeline
+__IMPORTANT:__ The developer and user documentation is published on GitHub Pages.
 
-## Set up a project from scratch
+Please view the docs at:
 
-To set up a project for the pipeline from scratch, use the [Setup Guide](docs/SETUP.md).
+https://bcgov.github.io/nr-polaris-docs/#/
 
-## Deploy using the pipeline
+## Contributing
 
-If a project has already been set up to use the pipeline, then follow the [Deployment Guide](docs/DEPLOY.md)
+If you want to suggest changes, please open an issue or provide a pull request with your changes to the [source documents](./docs). If you want to run the documentation locally, review the [Documents Readme](DOC_README.md).

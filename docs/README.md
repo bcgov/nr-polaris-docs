@@ -1,6 +1,6 @@
 <img src="./android-chrome-192x192.png" alt="NR Broker" width="100"/>
 
-# nr-polaris-docs
+# NR Polaris Pipeline Docs
 
 User Guides and Documentation for the Polaris Pipeline
 
