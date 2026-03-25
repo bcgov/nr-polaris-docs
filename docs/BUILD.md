@@ -137,6 +137,10 @@ Build your service using the Maven wrapper:
 
 # Build with detailed output
 ./mvnw clean package -X
+
+# Build and install into local Maven repository (useful for building and sharing component artifacts locally between modules
+# without publishing them to a remote repository)
+./mvnw -Dmaven.repo.local="$HOME/.m2/repository/" clean install
 ```
 
 The Maven wrapper automatically uses the environment variables and credentials configured by `env.sh`.
