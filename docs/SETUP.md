@@ -47,8 +47,15 @@ podman run --rm -it -v ${PWD}:/src --userns keep-id ghcr.io/bcgov/nr-repository-
 For a Java/Maven project, configure Maven:
 
 - Edit your `pom.xml`:
-- Add a `<repositories>` section to your `pom.xml` to include Maven Central and NR Artifactory:
+- Update `<version>` and add a `<properties>` section to use the app version environment variable:
+```xml
+<version>${revision}</version>
+<properties>
+    <revision>1.0.0-SNAPSHOT</revision>
+</properties>
+```
 
+- Add a `<repositories>` section to your `pom.xml` to include Maven Central and NR Artifactory:
 ```xml
 <repositories>
   <repository>
@@ -75,10 +82,61 @@ For a Java/Maven project, configure Maven:
 </repositories>
 ```
 
-- Add a GitHub profile for publishing artifacts and replace the org/repo with yours:
+- Add the Flatten Maven Plugin to your `<build>` section:
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>flatten-maven-plugin</artifactId>
+      <version>1.1.0</version>
+      <configuration>
+        <updatePomFile>true</updatePomFile>
+        <flattenMode>resolveCiFriendliesOnly</flattenMode>
+      </configuration>
+      <executions>
+        <execution>
+          <id>flatten</id>
+          <phase>process-resources</phase>
+          <goals>
+            <goal>flatten</goal>
+          </goals>
+        </execution>
+        <execution>
+          <id>flatten.clean</id>
+          <phase>clean</phase>
+          <goals>
+            <goal>clean</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
 
+- Add `.flattened-pom.xml` to your `.gitignore` file:
+```bash
+# flattened pom (used by flatten-maven-plugin)
+.flattened-pom.xml
+```
+
+- Add a GitHub profile for publishing artifacts and replace the org/repo with yours:
 ```xml
 <profiles>
+  <!-- Activated automatically when the VERSION environment variable is set.
+       Sets the revision to the VERSION environment variable (avoids having to modify the pom file for release versions) -->
+  <profile>
+    <id>version-from-env</id>
+    <activation>
+      <property>
+        <name>env.VERSION</name>
+      </property>
+    </activation>
+    <properties>
+      <revision>${env.VERSION}</revision>
+    </properties>
+  </profile>
   <profile>
     <id>github</id>
     <distributionManagement>
