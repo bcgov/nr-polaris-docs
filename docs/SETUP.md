@@ -44,16 +44,16 @@ podman run --rm -it -v ${PWD}:/src --userns keep-id ghcr.io/bcgov/nr-repository-
 
 ## Configure Artifactory
 
-For a project that depends on access to shared private artifacts, configure Artifactory:
+For a project that depends on access to shared private artifacts, configure read-only access to the [CSBC Artifactory Polaris Project](https://artifacts.developer.gov.bc.ca/ui/packages?projectKey=cc20):
 
 - Use the [create-artifactory-service-account.sh](https://github.com/bcgov-c/tenant-gitops-c2053d/blob/main/cicd-jenkins/create-artifactory-service-account.sh) script
 - The script will:
-    - Use the OpenShift template to create an Artifactory service account
-    - Add the service account to the Polaris Jenkins Artifactory project with read access to artifacts
+    - Use the OpenShift template to create a service account for the [CSBC Artifactory Polaris Project](https://artifacts.developer.gov.bc.ca/ui/packages?projectKey=cc20)
+    - Add the service account to the [CSBC Artifactory Polaris Project](https://artifacts.developer.gov.bc.ca/ui/packages?projectKey=cc20) with read access to artifacts
     - Store the credentials in Vault (used for local builds, and by the pipeline)
 - To run the script:
     - Login to OpenShift (see [instructions](https://developer.gov.bc.ca/docs/default/component/platform-developer-docs/docs/openshift-projects-and-access/install-the-oc-command-line-tool/#test-oc-login))
-    - (optional) Set the ARTIFACTORY_TOKEN (Artifactory Identity Token). Otherwise the script will prompt if not set. ex.`read -p "Artifactory Token:" -s ARTIFACTORY_TOKEN`
+    - (optional) Set the ARTIFACTORY_TOKEN ([Generate an Artifactory Identity Token](https://artifacts.developer.gov.bc.ca/ui/user_profile)). Otherwise the script will prompt if not set. ex.`read -p "Artifactory Token:" -s ARTIFACTORY_TOKEN`
     - Run the script with the project and service: ex. `create-artifactory-service-account.sh --project my-project --service my-service`
     - To pass the ARTIFACTORY_TOKEN use: ex. `ARTIFACTORY_TOKEN="$ARTIFACTORY_TOKEN" create-artifactory-service-account.sh --project my-project --service my-service`
 
